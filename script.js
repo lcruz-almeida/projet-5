@@ -79,9 +79,10 @@ function stopMagic() {
   if (particleInterval) clearInterval(particleInterval);
 }
 
-// --- função para páginas voarem ---
 function flyPages() {
-  const pages = document.querySelectorAll('.page'); 
+  // Seleciona apenas as páginas internas, excluindo capa e contracapa
+  const pages = document.querySelectorAll('.page:not(.front-cover):not(.back-cover)');
+  
   pages.forEach((page, i) => {
     setTimeout(() => {
       const flyingPage = page.cloneNode(true);
@@ -95,6 +96,7 @@ function flyPages() {
 
       document.body.appendChild(flyingPage);
 
+      // Posição final aleatória (simula vento)
       const endX = (Math.random() - 0.5) * window.innerWidth;
       const endY = -Math.random() * window.innerHeight;
 
@@ -104,7 +106,9 @@ function flyPages() {
       });
 
       setTimeout(() => flyingPage.remove(), 3000);
+
     }, i * 100);
   });
 }
+
 
