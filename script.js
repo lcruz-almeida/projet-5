@@ -79,13 +79,32 @@ function stopMagic() {
   if (particleInterval) clearInterval(particleInterval);
 }
 
-/* --- NOVA FUNÇÃO: FAZER AS PÁGINAS VOAREM --- */
+// --- função para páginas voarem ---
 function flyPages() {
-  const pages = document.querySelectorAll('.page');
+  const pages = document.querySelectorAll('.page'); 
   pages.forEach((page, i) => {
     setTimeout(() => {
-      page.classList.add('fly');
-      page.addEventListener('animationend', () => page.remove());
-    }, i * 150);
+      const flyingPage = page.cloneNode(true);
+      flyingPage.style.position = 'absolute';
+      flyingPage.style.left = `${page.getBoundingClientRect().left}px`;
+      flyingPage.style.top = `${page.getBoundingClientRect().top}px`;
+      flyingPage.style.width = `${page.offsetWidth}px`;
+      flyingPage.style.height = `${page.offsetHeight}px`;
+      flyingPage.style.transition = 'transform 3s ease-out, opacity 3s ease-out';
+      flyingPage.style.zIndex = 1000;
+
+      document.body.appendChild(flyingPage);
+
+      const endX = (Math.random() - 0.5) * window.innerWidth;
+      const endY = -Math.random() * window.innerHeight;
+
+      requestAnimationFrame(() => {
+        flyingPage.style.transform = `translate(${endX}px, ${endY}px)`;
+        flyingPage.style.opacity = 0;
+      });
+
+      setTimeout(() => flyingPage.remove(), 3000);
+    }, i * 100);
   });
 }
+
