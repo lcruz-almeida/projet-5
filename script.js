@@ -7,6 +7,7 @@ let magicTimeout;
 // Cores mágicas para partículas
 const colors = ['#ffd700', '#ff9a9e', '#a18cd1', '#ffffff', '#84fab0'];
 
+// Função para tocar som
 function playSound(audioId) {
     const audio = document.getElementById(audioId);
     if (audio) {
@@ -25,6 +26,7 @@ function toggleTheme() {
 // Abrir/fechar livro
 function toggleBook() {
     isOpen = !isOpen;
+
     if (isOpen) {
         bookContainer.classList.add('open');
 
@@ -33,7 +35,9 @@ function toggleBook() {
         setTimeout(() => { playSound('soundPage'); }, 300 + pageTurnDelay);
         setTimeout(() => { playSound('soundPage'); }, 300 + 2 * pageTurnDelay);
 
-        magicTimeout = setTimeout(startMagic, 2200);
+        // Inicia partículas mágicas logo após abrir as páginas
+        magicTimeout = setTimeout(startMagic, 800);
+
     } else {
         bookContainer.classList.remove('open');
         clearTimeout(magicTimeout);
@@ -52,12 +56,9 @@ function createParticle() {
     particle.style.width = `${size}px`;
     particle.style.height = `${size}px`;
 
-    let currentColors;
-    if (body.classList.contains('dark-mode')) {
-        currentColors = ['#ffffff', '#cfcfcf', '#a0a0ff', '#ffd700', '#e0e0ff'];
-    } else {
-        currentColors = ['#ffd700', '#ff9a9e', '#a18cd1', '#ffffff', '#ffb6c1'];
-    }
+    const currentColors = body.classList.contains('dark-mode') 
+        ? ['#ffffff', '#cfcfcf', '#a0a0ff', '#ffd700', '#e0e0ff'] 
+        : ['#ffd700', '#ff9a9e', '#a18cd1', '#ffffff', '#ffb6c1'];
 
     const color = currentColors[Math.floor(Math.random() * currentColors.length)];
     particle.style.background = color;
@@ -80,22 +81,24 @@ function createParticle() {
     particle.style.animation = `floatUp ${duration}s ease-out forwards`;
 
     document.body.appendChild(particle);
-
-    setTimeout(() => { particle.remove(); }, duration * 1000);
+    setTimeout(() => particle.remove(), duration * 1000);
 }
 
+// Iniciar partículas mágicas
 function startMagic() {
     stopMagic();
-    for(let i = 0; i < 70; i++) setTimeout(createParticle, i * 25);
+    for (let i = 0; i < 70; i++) setTimeout(createParticle, i * 25);
     particleInterval = setInterval(createParticle, 20);
 }
 
+// Parar partículas mágicas
 function stopMagic() {
     if (particleInterval) clearInterval(particleInterval);
 }
 
 // --- NOVA FUNÇÃO: Páginas voando pelo vento ---
 function flyPages() {
+    // Seleciona todas as páginas exceto capa e contracapa
     const pages = document.querySelectorAll('.page:not(.front-cover):not(.back-cover)');
 
     pages.forEach((page, i) => {
