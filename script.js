@@ -4,10 +4,8 @@ let isOpen = false;
 let particleInterval;
 let magicTimeout;
 
-// Cores mágicas para partículas
 const colors = ['#ffd700', '#ff9a9e', '#a18cd1', '#ffffff', '#84fab0'];
 
-// Função para tocar som
 function playSound(audioId) {
     const audio = document.getElementById(audioId);
     if (audio) {
@@ -16,14 +14,12 @@ function playSound(audioId) {
     }
 }
 
-// Alternar tema (dark/light)
 function toggleTheme() {
     body.classList.toggle('dark-mode');
     body.style.transition = 'background 1.5s ease, color 1.5s ease';
     setTimeout(() => { body.style.transition = ''; }, 1600);
 }
 
-// Abrir/fechar livro
 function toggleBook() {
     isOpen = !isOpen;
 
@@ -35,7 +31,6 @@ function toggleBook() {
         setTimeout(() => { playSound('soundPage'); }, 300 + pageTurnDelay);
         setTimeout(() => { playSound('soundPage'); }, 300 + 2 * pageTurnDelay);
 
-        // Inicia partículas mágicas logo após abrir as páginas
         magicTimeout = setTimeout(startMagic, 800);
 
     } else {
@@ -45,7 +40,6 @@ function toggleBook() {
     }
 }
 
-// Criar partículas mágicas
 function createParticle() {
     if (!isOpen) return;
 
@@ -93,9 +87,8 @@ function stopMagic() {
     if (particleInterval) clearInterval(particleInterval);
 }
 
-// --- NOVA FUNÇÃO: Páginas voando pelo vento ---
 function flyPages() {
-    // Seleciona todas as páginas exceto capa e contracapa
+
     const pages = document.querySelectorAll('.page:not(.front-cover):not(.back-cover)');
 
     pages.forEach((page, i) => {
@@ -112,7 +105,7 @@ function flyPages() {
 
             document.body.appendChild(flyingPage);
 
-            // Trajetória aleatória simulando vento
+           
             const endX = (Math.random() - 0.5) * window.innerWidth * 2;
             const endY = -Math.random() * window.innerHeight * 1.5 - window.innerHeight;
             const rotateDeg = (Math.random() - 0.5) * 1080; 
