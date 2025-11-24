@@ -87,7 +87,7 @@ function createParticle() {
 // Iniciar partículas mágicas
 function startMagic() {
     stopMagic();
-    for (let i = 0; i < 70; i++) setTimeout(createParticle, i * 25);
+    for (let i = 0; i < 70; i++) setTimeout(createParticle, i * 10);
     particleInterval = setInterval(createParticle, 20);
 }
 
