@@ -169,8 +169,6 @@ function shakeBook() {
     setTimeout(() => bookContainer.classList.remove('shake'), 500);
 }
 
-}
-
 
 // BUTTON FEU
 function spawnFire() {
