@@ -38,8 +38,14 @@ function toggleBook() {
         setTimeout(() => playSound('soundPage'), 300);
         setTimeout(() => playSound('soundPage'), 300 + pageTurnDelay);
         setTimeout(() => playSound('soundPage'), 300 + 2 * pageTurnDelay);
-}
 
+        // NÃO iniciar partículas automaticamente!
+        // magicTimeout = setTimeout(startMagic, 500); // removido
+    } else { 
+        bookContainer.classList.remove('open'); 
+        clearTimeout(magicTimeout); 
+        stopMagic(); 
+    }
     
 // CRIAR PARTÍCULAS MÁGICAS
 function createParticle() {
@@ -79,6 +85,20 @@ function createParticle() {
     document.body.appendChild(particle);
 
     setTimeout(() => particle.remove(), duration * 1000);
+}
+
+let particlesActive = false;
+
+function rainbowParticles() {
+    if (!isOpen) return; // Só funciona se o livro estiver aberto
+
+    if (!particlesActive) {
+        startMagic();
+        particlesActive = true;
+    } else {
+        stopMagic();
+        particlesActive = false;
+    }
 }
 
 function startMagic() {
