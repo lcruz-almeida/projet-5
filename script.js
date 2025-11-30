@@ -76,8 +76,9 @@ function createParticle() {
     const startX = spineRect.left + spineRect.width / 2;
     const startY = spineRect.top + spineRect.height / 2;
 
-    particle.style.left = `${startX}px`;
-    particle.style.top = `${startY}px`;
+particle.style.left = `${startX}px`;
+particle.style.top = `${startY}px`;
+
 
     // trajetórias aleatórias
     const tx = (Math.random() - 0.5) * 120;
