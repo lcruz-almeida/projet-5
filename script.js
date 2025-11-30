@@ -50,10 +50,7 @@ function toggleBook() {
     
 // CRIAR PARTÍCULAS MÁGICAS
 function createParticle() {
-    if (!isOpen) return; // mantém isto
-
-    const originEl = document.getElementById('particleOrigin');
-    if (!originEl) return; // evita erro se o elemento não existir
+    if (!isOpen) return; 
 
     const particle = document.createElement('div');
     particle.classList.add('particle');
@@ -70,9 +67,10 @@ function createParticle() {
     particle.style.background = color;
     particle.style.boxShadow = `0 0 ${size * 3}px ${color}`;
 
-    const origin = originEl.getBoundingClientRect();
-    const startX = origin.left + origin.width / 2;
-    const startY = origin.top + origin.height / 2;
+    const spine = document.querySelector('.spine').getBoundingClientRect();
+    const startX = spine.left + spine.width / 2;
+    const startY = spine.top + spine.height / 2;
+
 
     particle.style.left = `${startX}px`;
     particle.style.top = `${startY}px`;
