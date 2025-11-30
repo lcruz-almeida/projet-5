@@ -134,33 +134,6 @@ function flyPages() {
     });
 }
 
-function resetBook() {
-    // Fecha o livro
-    isOpen = false;
-    bookContainer.classList.remove('open');
-
-    // Para partículas mágicas
-    stopMagic();
-
-    // Para vento de páginas (não é um loop, por isso ok)
-
-    // Para fogo
-    stopFire();
-
-    // Para Lumière
-    if (lumiereInterval) {
-        clearInterval(lumiereInterval);
-        lumiereInterval = null;
-    }
-
-    // Remove todos os elementos que ficaram no ecrã
-    document.querySelectorAll('.particle, .fire, .lumiere-particle')
-            .forEach(el => el.remove());
-}
-
-
-
-
 
 // ==========================
 // 🔥 FOGO DENTRO DO LIVRO
@@ -207,4 +180,28 @@ function toggleFire() {
     if (fireInterval) stopFire();
     else startFire();
 }
+
+function resetBook() {
+    // Fecha o livro
+    isOpen = false;
+    bookContainer.classList.remove('open');
+
+    // Para partículas mágicas
+    stopMagic();
+
+    // Para fogo
+    if (typeof stopFire === "function") {
+        stopFire();
+    }
+
+    // Para Lumière
+    if (lumiereInterval) {
+        clearInterval(lumiereInterval);
+        lumiereInterval = null;
+    }
+
+    // Remove partículas do ecrã
+    document.querySelectorAll('.particle, .fire, .lumiere-particle').forEach(el => el.remove());
+}
+
 
