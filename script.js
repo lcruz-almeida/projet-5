@@ -67,12 +67,12 @@ function createParticle() {
     particle.style.background = color;
     particle.style.boxShadow = `0 0 ${size * 3}px ${color}`;
 
-    const rect = bookContainer.getBoundingClientRect();
-    const startX = rect.left + rect.width / 2;
-    const startY = rect.top + rect.height / 2;
+    const origin = document.getElementById('particleOrigin').getBoundingClientRect();
+    const startX = origin.left;
+    const startY = origin.top;
 
-    particle.style.left = `${startX}px`;
-    particle.style.top = `${startY}px`;
+    const startX = origin.left + origin.width / 2;
+    const startY = origin.top + origin.height / 2;
 
     const tx = (Math.random() - 0.5) * 120;
     const txEnd = (Math.random() - 0.5) * 700;
