@@ -187,7 +187,9 @@ function resetBook() {
     bookContainer.classList.remove('open');
 
     // Para partículas mágicas
-    stopMagic();
+    if (typeof stopMagic === "function") {
+        stopMagic();
+    }
 
     // Para fogo
     if (typeof stopFire === "function") {
@@ -200,7 +202,12 @@ function resetBook() {
         lumiereInterval = null;
     }
 
-    // Remove partículas do ecrã
+    // Se o tema estiver ativo, desativa-o
+    if (document.body.classList.contains("dark-theme")) {
+        toggleTheme();
+    }
+
+    // Remove TODAS as partículas do ecrã
     document.querySelectorAll('.particle, .fire, .lumiere-particle').forEach(el => el.remove());
 }
 
