@@ -46,6 +46,7 @@ function toggleBook() {
         clearTimeout(magicTimeout); 
         stopMagic(); 
     }
+ }
     
 // CRIAR PARTÍCULAS MÁGICAS
 function createParticle() {
