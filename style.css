@@ -240,14 +240,14 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 /* --- FEU--- */
 .fire {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 12px;           /* maior que antes */
+    height: 12px;
     border-radius: 50%;
     pointer-events: none;
-    background: radial-gradient(circle, #ffeb3b, #ff9800, #ff5722);
-    opacity: 0.9;
-    filter: blur(2px);
-    animation: fireRise 1.2s ease-out forwards;
+    background: radial-gradient(circle, #ffe066, #ff6b6b, #ff3c00);
+    opacity: 1;            /* mais visível */
+    filter: blur(3px);     /* um pouco mais difusa */
+    animation: fireRise 1s ease-out forwards; /* ligeiramente mais rápida */
     mix-blend-mode: screen;
 }
 
@@ -257,15 +257,15 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
         opacity: 1;
     }
     50% {
-        transform: translateY(-40px) scale(1.4);
+        transform: translateY(-50px) scale(1.5);
         opacity: 0.9;
     }
     100% {
-        transform: translateY(-90px) scale(0.6);
+        transform: translateY(-100px) scale(0.5);
         opacity: 0;
     }
-
 }
+
 
 /* --- SECOUER--- */
 @keyframes shakeOpen {
