@@ -48,7 +48,7 @@ function toggleBook() {
     }
  }
     
-// CRIAR PARTÍCULAS MÁGICAS
+// BUTTON PARTICULES
 function createParticle() {
     if (!isOpen) return; // só cria partículas se o livro estiver aberto
 
@@ -119,7 +119,7 @@ function stopMagic() {
     if (particleInterval) clearInterval(particleInterval);
 }
 
-// FAZER AS PÁGINAS VOAREM PELO ECRÃ
+// BUTTON VENT
 function flyPages() {
     const pages = document.querySelectorAll('.page:not(.front-cover):not(.back-cover)');
 
@@ -155,16 +155,14 @@ function flyPages() {
     });
 }
 
+// BUTTON SECOUER
 function shakeBook() {
     bookContainer.classList.add('shake');
     setTimeout(() => bookContainer.classList.remove('shake'), 500);
 }
 
 
-// ==========================
-// 🔥 FOGO DENTRO DO LIVRO
-// ==========================
-
+// BUTTON FEU
 function spawnFire() {
     const rect = bookContainer.getBoundingClientRect();
 
@@ -206,6 +204,9 @@ function toggleFire() {
     if (fireInterval) stopFire();
     else startFire();
 }
+
+
+
 function resetBook() {
     // Fecha o livro
     isOpen = false;
