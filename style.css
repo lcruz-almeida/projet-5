@@ -246,8 +246,8 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
   mix-blend-mode: screen;
   will-change: transform, opacity;
   background: radial-gradient(circle, #ffeb3b, #ff9800, #ff5722);
-  transform: translate(-50%, -50%);
 }
+
 
 @keyframes floatUpFire {
   0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
