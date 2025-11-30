@@ -142,18 +142,22 @@ function resetBook() {
     // Para partículas mágicas
     stopMagic();
 
+    // Para vento de páginas (não é um loop, por isso ok)
+
     // Para fogo
     stopFire();
 
-    // Para halo Lumière
+    // Para Lumière
     if (lumiereInterval) {
         clearInterval(lumiereInterval);
         lumiereInterval = null;
     }
 
-    // Remove todas as partículas visíveis
-    document.querySelectorAll('.particle, .fire, .lumiere-particle').forEach(el => el.remove());
+    // Remove todos os elementos que ficaram no ecrã
+    document.querySelectorAll('.particle, .fire, .lumiere-particle')
+            .forEach(el => el.remove());
 }
+
 
 
 
