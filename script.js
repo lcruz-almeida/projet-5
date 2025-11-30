@@ -157,17 +157,11 @@ function flyPages() {
 
 // BUTTON SECOUER
 function shakeBook() {
-    // Abre o livro se ainda estiver fechado
-    if (!isOpen) {
-        toggleBook(); // isso atualiza isOpen e adiciona a classe 'open'
-    }
-
-    // Aplica a animação de shake
+    if (!isOpen) toggleBook();
     bookContainer.classList.add('shake');
-
-    // Remove a classe após 0.5s para permitir que a animação possa ser repetida
     setTimeout(() => bookContainer.classList.remove('shake'), 500);
 }
+
 
 
 // BUTTON FEU
