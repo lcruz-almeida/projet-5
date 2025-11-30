@@ -250,9 +250,9 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 }
 
 @keyframes floatUpFire {
-  0% { opacity: 0; transform: translate(0,0) scale(0); }
-  10% { opacity: 1; transform: translate(var(--tx), var(--ty-start)) scale(1); }
-  100% { opacity: 0; transform: translate(var(--tx), var(--ty-end)) scale(0); }
+  0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+  50% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), calc(var(--ty) * 1.2)) scale(0); opacity: 0; }
 }
 
 
