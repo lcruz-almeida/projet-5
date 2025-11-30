@@ -173,3 +173,9 @@ function stopFire() {
     clearInterval(fireInterval);
     fireInterval = null;
 }
+
+function toggleFire() {
+    if (fireInterval) stopFire();
+    else startFire();
+}
+
