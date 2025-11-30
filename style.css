@@ -204,7 +204,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 .book-container.open .p2 { transform: rotateY(-160deg); transition-delay: 0.3s; }
 .book-container.open .p3 { transform: rotateY(-10deg); transition-delay: 0.5s; background: linear-gradient(to right, #ddd, var(--page-color) 10%); border-left: none; }
 
-/* --- ANIMAÇÃO PÁGINAS VOANDO --- */
+/* --- VENT --- */
 .page.fly {
   position: absolute;
   transform-origin: center;
@@ -220,7 +220,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
   100% { transform: rotateY(360deg) rotateX(180deg) translate(300px,-400px); opacity: 0; }
 }
 
-/* --- PARTICULAS --- */
+/* --- PARTICULES --- */
 .particle {
   position: absolute;
   border-radius: 50%;
@@ -237,8 +237,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 }
 
 
-FOGO 
-/* --- FIRE PARTICLES --- */
+/* --- FEU--- */
 .fire {
     position: absolute;
     width: 8px;
@@ -266,8 +265,7 @@ FOGO
         opacity: 0;
     }
 
-
-BUTTON SECOUER 
+/* --- SECOUER--- */
 @keyframes shake {
     0% { transform: translate(0px, 0px) rotate(0deg); }
     25% { transform: translate(5px, -5px) rotate(-5deg); }
