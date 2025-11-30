@@ -134,6 +134,11 @@ function flyPages() {
     });
 }
 
+function shakeBook(){
+    bookContainer.classList.add('shake');
+    setTimeout(()=>bookContainer.classList.remove('shake'),500);
+
+}
 
 // ==========================
 // 🔥 FOGO DENTRO DO LIVRO
