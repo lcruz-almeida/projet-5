@@ -70,13 +70,10 @@ function createParticle() {
     particle.style.boxShadow = `0 0 ${size * 3}px ${color}`;
 
     // posição inicial: centro da lombada
-   const spineEl = document.getElementById('spineOrigin');
-   const spineRect = spineEl.getBoundingClientRect();
-   const startX = spineRect.left + spineRect.width / 2;
-   const startY = spineRect.top + spineRect.height / 2;
+   const origin = document.getElementById('particleOrigin').getBoundingClientRect();
+   const startX = origin.left + origin.width / 2;
+   const startY = origin.top + origin.height / 2;
 
-   particle.style.left = `${startX}px`;
-   particle.style.top = `${startY}px`;
 
 
 
