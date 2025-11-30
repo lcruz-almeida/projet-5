@@ -68,9 +68,6 @@ function createParticle() {
     particle.style.boxShadow = `0 0 ${size * 3}px ${color}`;
 
     const origin = document.getElementById('particleOrigin').getBoundingClientRect();
-    const startX = origin.left;
-    const startY = origin.top;
-
     const startX = origin.left + origin.width / 2;
     const startY = origin.top + origin.height / 2;
 
