@@ -174,31 +174,17 @@ function shakeBook() {
 
 // BUTTON FEU
 function spawnFire() {
-    if (!isOpen) return;
-
-    // Usando centro do livro em vez de #particleOrigin
-    const bookRect = document.getElementById('bookContainer').getBoundingClientRect();
-    const startX = bookRect.left + bookRect.width / 2;
-    const startY = bookRect.top + bookRect.height / 2;
-
-    // Criar container da chama
     const flameBox = document.createElement("div");
-    flameBox.classList.add("flame-box");
     flameBox.style.position = "absolute";
-    flameBox.style.left = `${startX}px`;
-    flameBox.style.top = `${startY}px`;
+    flameBox.style.left = "50%";
+    flameBox.style.top = "50%";
+    flameBox.style.width = "50px";
+    flameBox.style.height = "50px";
+    flameBox.style.background = "red";
+    flameBox.style.zIndex = 9999;
     flameBox.style.transform = "translate(-50%, -50%)";
-    flameBox.style.zIndex = 999;
-
-    // Teste de visibilidade
-    flameBox.style.background = 'red';
-    flameBox.style.width = '60px';
-    flameBox.style.height = '60px';
-
-    // Adiciona ao DOM
     document.body.appendChild(flameBox);
 }
-
 
 
 
