@@ -218,7 +218,7 @@ function createLumiere() {
 }
 
 let lumiereActive = false;
-let lumiereInterval = null;
+
 
 function toggleLumiere() {
     if (!isOpen) return;
