@@ -237,23 +237,51 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 }
 
 
-/* --- FEU--- */
+/* --- FEU --- */
 .fire {
   position: absolute;
-  border-radius: 50%;
   pointer-events: none;
   z-index: 999;
-  mix-blend-mode: screen;
-  will-change: transform, opacity;
-  background: radial-gradient(circle, #ffeb3b, #ff9800, #ff5722);
-}
+  width: 14px;
+  height: 20px;
 
+  /* forma de chama (ovo alongado) */
+  border-radius: 50% 50% 60% 60%;
+
+  /* brilho + fogo */
+  background: radial-gradient(circle at 50% 70%, 
+    rgba(255, 255, 0, 1),      /* centro amarelo forte */
+    rgba(255, 140, 0, 0.9),    /* laranja */
+    rgba(255, 60, 0, 0.8),     /* vermelho */
+    rgba(255, 0, 0, 0)         /* fade */
+  );
+
+  box-shadow: 
+    0 0 10px rgba(255, 100, 0, 0.8),
+    0 0 20px rgba(255, 60, 0, 0.6),
+    0 0 40px rgba(255, 40, 0, 0.4);
+
+  /* remover totalmente esse translate que destruía a posição */
+  transform: none;
+
+  animation: floatUpFire 1.5s ease-out forwards;
+}
 
 @keyframes floatUpFire {
-  0% { opacity: 0; transform: translate(0,0) scale(0); }
-  10% { opacity: 1; transform: translate(var(--tx), var(--ty-start)) scale(1); }
-  100% { opacity: 0; transform: translate(var(--tx), var(--ty-end)) scale(0); }
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(var(--tx), -20px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx-end), -120px) scale(0.2);
+  }
 }
+
 
 
 
