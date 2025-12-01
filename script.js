@@ -188,32 +188,25 @@ function spawnFire() {
 }
 
 // BUTTON LUMIERE
-function startLumiere() {
-    stopLumiere(); // limpa qualquer intervalo anterior
+function toggleLumiere() {
+    if (!isOpen) return;
 
-    lumiereInterval = setInterval(() => {
-        const origin = document.getElementById('lumiereOrigin');
-        if (!origin) return;
+    const origin = document.getElementById('lumiereOrigin').getBoundingClientRect();
+    const centerX = origin.left + origin.width / 2;
+    const centerY = origin.top + origin.height / 2;
 
-        const beam = document.createElement('div');
-        beam.classList.add('magic-beam');
+    const beam = document.createElement('div');
+    beam.classList.add('magic-beam');
+    document.body.appendChild(beam);
 
-        origin.appendChild(beam);
-        beam.style.position = 'absolute';
-        beam.style.left = '50%';
-        beam.style.top = '0';
-        beam.style.transform = 'translateX(-50%)';
+    // Posiciona o feixe no centro do lumiereOrigin
+    beam.style.left = `${centerX}px`;
+    beam.style.top  = `${centerY}px`;
+    beam.style.transform = 'translateX(-50%)';
 
-        setTimeout(() => beam.remove(), 2600);
-    }, 300); // a cada 300ms sai um feixe
+    setTimeout(() => beam.remove(), 2600);
 }
 
-function stopLumiere() {
-    if (lumiereInterval) {
-        clearInterval(lumiereInterval);
-        lumiereInterval = null;
-    }
-}
 
 
 
