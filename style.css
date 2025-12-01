@@ -179,7 +179,8 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
   transform-origin: left;
 }
 
-#particleOrigin {
+#particleOrigin 
+#lumiereOrigin {
     position: absolute;
     left: 50%;
     top: 50%;
