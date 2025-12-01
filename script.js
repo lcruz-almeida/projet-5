@@ -45,6 +45,7 @@ function toggleBook() {
         bookContainer.classList.remove('open'); 
         clearTimeout(magicTimeout); 
         stopMagic(); 
+        stopLumiere();
     }
  }
     
@@ -187,26 +188,33 @@ function spawnFire() {
 }
 
 // BUTTON LUMIERE
-function toggleLumiere() {
-    if (!isOpen) return;
+function startLumiere() {
+    stopLumiere(); // limpa qualquer intervalo anterior
 
-    const origin = document.getElementById('lumiereOrigin');
+    lumiereInterval = setInterval(() => {
+        const origin = document.getElementById('lumiereOrigin');
+        if (!origin) return;
 
-    const beam = document.createElement('div');
-    beam.classList.add('magic-beam');
+        const beam = document.createElement('div');
+        beam.classList.add('magic-beam');
 
-    // adiciona como filho de lumiereOrigin
-    origin.appendChild(beam);
+        origin.appendChild(beam);
+        beam.style.position = 'absolute';
+        beam.style.left = '50%';
+        beam.style.top = '0';
+        beam.style.transform = 'translateX(-50%)';
 
-    // posiciona no centro do ponto de referência
-    beam.style.position = 'absolute';
-    beam.style.left = '50%';
-    beam.style.top = '0';
-    beam.style.transform = 'translateX(-50%)';
-
-    // remove após a animação
-    setTimeout(() => beam.remove(), 2600);
+        setTimeout(() => beam.remove(), 2600);
+    }, 300); // a cada 300ms sai um feixe
 }
+
+function stopLumiere() {
+    if (lumiereInterval) {
+        clearInterval(lumiereInterval);
+        lumiereInterval = null;
+    }
+}
+
 
 
 
