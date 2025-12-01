@@ -260,9 +260,7 @@ function resetBook() {
     if (typeof stopFire === "function") stopFire();
 
     // Para Lumière
-    if (lumiereInterval) {
-        clearInterval(lumiereInterval);
-        lumiereInterval = null;
+    if (typeof stopLumiere === "function") stopLumiere();
     }
 
     // Remove TODAS as partículas do ecrã
