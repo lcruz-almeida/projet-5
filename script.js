@@ -258,13 +258,12 @@ function resetBook() {
     // Para partículas mágicas
     if (typeof stopMagic === "function") stopMagic();
 
-
     // Para fogo
     if (typeof stopFire === "function") stopFire();
 
     // Para Lumière
     if (typeof stopLumiere === "function") stopLumiere();
-    }
+    
 
     // Remove TODAS as partículas do ecrã
     document.querySelectorAll('.particle, .fire, .lumiere-particle').forEach(el => el.remove());
