@@ -154,6 +154,8 @@ function flyPages() {
             setTimeout(() => flyingPage.remove(), 4000);
         }, i * 100);
     });
+
+    
 }
 
 
@@ -256,11 +258,6 @@ function resetBook() {
     // Para partículas mágicas
     if (typeof stopMagic === "function") stopMagic();
 
-    // Para Vent
-    if (typeof stopFlyPages === "function") stopFlyPages();
-
-    // Para Secouer
-    if (typeof stopShakeBook === "function") stopShakeBook();
 
     // Para fogo
     if (typeof stopFire === "function") stopFire();
