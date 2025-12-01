@@ -243,7 +243,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
     width: 60px;
     position: absolute;
     transform-origin: center bottom;
-    animation: flicker 3ms 200ms ease-in infinite alternate;
+   animation: flicker 180ms ease-in-out infinite alternate;
 }
 
 .flame{
