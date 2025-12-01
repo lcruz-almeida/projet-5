@@ -192,27 +192,56 @@ function spawnFire() {
 }
 
 
-// BUTTON LUMIERE
-function toggleLumiere() {
-    if (!isOpen) return;
 
-    const origin = document.getElementById('lumiereOrigin');
+// BUTTON LUMIERE
+function createLumiere() {
+    if (!isOpen) return; // só cria feixe se o livro estiver aberto
 
     const beam = document.createElement('div');
     beam.classList.add('magic-beam');
 
-    // adiciona como filho de lumiereOrigin
-    origin.appendChild(beam);
+    // posição inicial: centro do lumiereOrigin
+    const origin = document.getElementById('lumiereOrigin').getBoundingClientRect();
+    const startX = origin.left + origin.width / 2;
+    const startY = origin.top + origin.height / 2;
 
-    // posiciona no centro de lumiereOrigin
-    beam.style.position = 'absolute';
-    beam.style.left = '50%';
-    beam.style.top = '0';
+    // posiciona o feixe
+    beam.style.left = `${startX}px`;
+    beam.style.top = `${startY}px`;
     beam.style.transform = 'translateX(-50%)';
 
-    // remove após a animação
+    // adiciona ao body
+    document.body.appendChild(beam);
+
+    // remove automaticamente após animação
     setTimeout(() => beam.remove(), 2600);
 }
+
+let lumiereActive = false;
+let lumiereInterval = null;
+
+function toggleLumiere() {
+    if (!isOpen) return;
+
+    if (!lumiereActive) {
+        startLumiere();
+        lumiereActive = true;
+    } else {
+        stopLumiere();
+        lumiereActive = false;
+    }
+}
+
+function startLumiere() {
+    stopLumiere();
+    for (let i = 0; i < 20; i++) setTimeout(createLumiere, i * 100); // rajadas iniciais
+    lumiereInterval = setInterval(createLumiere, 300); // feixe contínuo
+}
+
+function stopLumiere() {
+    if (lumiereInterval) clearInterval(lumiereInterval);
+}
+
 
 
 
