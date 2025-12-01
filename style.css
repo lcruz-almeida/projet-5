@@ -337,13 +337,17 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 
 /* --- LUMIERE --- */
 #lumiereOrigin {
-    position: absolute;
-    left: 50%;
-    top: 50%;
+  .magic-beam {
+    position: absolute;         /* position absolue par rapport au body */
     width: 0;
     height: 0;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
+    border-left: 350px solid transparent;   /* moitié largeur gauche */
+    border-right: 350px solid transparent;  /* moitié largeur droite */
+    border-top: 600px solid rgba(255,255,220,0.9); /* couleur lumière */
+    filter: blur(22px) brightness(2.5);
+    transform-origin: center bottom;
+    animation: beamExpand 2.5s ease-out forwards;
+    z-index: 9999;
 }
 
 @keyframes beamExpand {
