@@ -340,9 +340,9 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
     position: absolute;         /* position absolue par rapport au body */
     width: 0;
     height: 0;
-    border-left: 350px solid transparent;   /* moitié largeur gauche */
-    border-right: 350px solid transparent;  /* moitié largeur droite */
-    border-top: 600px solid rgba(255,255,220,0.9); /* couleur lumière */
+    border-left: 100px solid transparent;   /* moitié largeur gauche */
+    border-right: 100px solid transparent;  /* moitié largeur droite */
+    border-top: 200px solid rgba(255,255,220,0.9); /* couleur lumière */
     filter: blur(22px) brightness(2.5);
     transform-origin: center bottom;
     animation: beamExpand 2.5s ease-out forwards;
