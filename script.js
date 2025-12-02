@@ -206,9 +206,9 @@ function createLumiere() {
     const startY = origin.top + origin.height / 2;
 
     // posiciona o feixe
-    beam.style.left = `${startX-50}px`;
+    beam.style.left = `${startX}px`;
     beam.style.top = `${startY}px`;
-    beam.style.transform = 'translateX(-50%)';
+    beam.style.transform = 'translateX(-80%)';
 
     // adiciona ao body
     document.body.appendChild(beam);
