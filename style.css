@@ -237,6 +237,39 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 }
 
 
+/* --- SECOUER--- */
+@keyframes shakeOpen {
+  0% { transform: translate(0,0) rotate(0deg); }
+  25% { transform: translate(5px,-5px) rotate(-5deg); }
+  50% { transform: translate(-5px,5px) rotate(5deg); }
+  75% { transform: translate(5px,-5px) rotate(-5deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+.shake { animation: shakeOpen 0.5s; }
+
+
+
+/* --- LUMIERE --- */
+.magic-beam {
+    position: absolute;         /* position absolue par rapport au body */
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;   /* moitié largeur gauche */
+    border-right: 100px solid transparent;  /* moitié largeur droite */
+    border-top: 200px solid rgba(255,255,220,0.9); /* couleur lumière */
+    filter: blur(22px) brightness(2.5);
+    transform-origin: center bottom;
+    animation: beamExpand 2.5s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes beamExpand {
+    0%   { opacity: 0.9; transform: scale(0.2); }
+    60%  { opacity: 1;   transform: scale(1.3); }
+    100% { opacity: 0;   transform: scale(2); }
+}
+
+
 /* --- FEU --- */
 
 .fire-container {
@@ -325,7 +358,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
     100% { transform: translate(-50%, -80px) scale(1.8); opacity: 0; }
 }
 
-/* RUNE */
+/* runes */
 .inner-page {
     position: relative;
     overflow: hidden;
@@ -339,41 +372,6 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
     pointer-events: none;
     user-select: none;
     text-shadow: 0 0 8px gold, 0 0 16px gold;
+    transition: opacity 0.4s ease, transform 0.4s ease;
     transform: scale(0.5) rotate(0deg);
-    transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
-
-/* --- SECOUER--- */
-@keyframes shakeOpen {
-  0% { transform: translate(0,0) rotate(0deg); }
-  25% { transform: translate(5px,-5px) rotate(-5deg); }
-  50% { transform: translate(-5px,5px) rotate(5deg); }
-  75% { transform: translate(5px,-5px) rotate(-5deg); }
-  100% { transform: translate(0,0) rotate(0deg); }
-}
-.shake { animation: shakeOpen 0.5s; }
-
-
-
-/* --- LUMIERE --- */
-.magic-beam {
-    position: absolute;         /* position absolue par rapport au body */
-    width: 0;
-    height: 0;
-    border-left: 100px solid transparent;   /* moitié largeur gauche */
-    border-right: 100px solid transparent;  /* moitié largeur droite */
-    border-top: 200px solid rgba(255,255,220,0.9); /* couleur lumière */
-    filter: blur(22px) brightness(2.5);
-    transform-origin: center bottom;
-    animation: beamExpand 2.5s ease-out forwards;
-    z-index: 9999;
-}
-
-@keyframes beamExpand {
-    0%   { opacity: 0.9; transform: scale(0.2); }
-    60%  { opacity: 1;   transform: scale(1.3); }
-    100% { opacity: 0;   transform: scale(2); }
-}
-
-
