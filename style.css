@@ -325,7 +325,6 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 }
 
 
-// rune 
 .rune {
     position: absolute;
     font-size: 24px;
