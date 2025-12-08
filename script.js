@@ -310,33 +310,46 @@ function spawnSpark() {
 
 
 // BUTTON ECRITURE
-const letters = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛋ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛜ','ᛞ','ᛟ'];
+let writingActive = false;
+let writingInterval;
 
-writingInterval = setInterval(() => {
-    const bookRect = document.getElementById('bookContainer').getBoundingClientRect();
-    const letter = document.createElement('div');
-    letter.classList.add('bouncing-letter');
+// todas as letras do alfabeto
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
-    // letra aleatória do array
-    letter.textContent = letters[Math.floor(Math.random() * letters.length)];
+function startWriting() {
+    if (!isOpen) toggleBook(); // abre o livro se fechado
 
-    // cor aleatória ou fixa
-    letter.style.color = 'red';
+    if (writingActive) return; // não iniciar múltiplas vezes
+    writingActive = true;
 
-    // posição inicial dentro do livro
-    const x = bookRect.left + Math.random() * bookRect.width;
-    const y = bookRect.top + Math.random() * bookRect.height;
-    letter.style.left = `${x}px`;
-    letter.style.top = `${y}px`;
+    writingInterval = setInterval(() => {
+        const bookRect = document.getElementById('bookContainer').getBoundingClientRect();
+        const letter = document.createElement('div');
+        letter.classList.add('bouncing-letter');
 
-    const scale = 0.5 + Math.random();
-    letter.style.transform = `scale(${scale}) rotate(${Math.random() * 360}deg)`;
+        // letra aleatória
+        letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
 
-    document.body.appendChild(letter);
+        // cor aleatória
+        const colors = ['#FFD700', '#FF4500', '#00FFFF', '#FF69B4', '#FFFFFF', '#7CFC00'];
+        letter.style.color = colors[Math.floor(Math.random() * colors.length)];
 
-    // remove após 10s
-    setTimeout(() => letter.remove(), 10000);
-}, 100);
+        // posição inicial dentro do livro
+        const x = bookRect.left + Math.random() * bookRect.width;
+        const y = bookRect.top + Math.random() * bookRect.height;
+        letter.style.left = `${x}px`;
+        letter.style.top = `${y}px`;
+
+        // animação inicial aleatória
+        const scale = 0.5 + Math.random();
+        letter.style.transform = `scale(${scale}) rotate(${Math.random() * 360}deg)`;
+
+        document.body.appendChild(letter);
+
+        // remove após 10 segundos
+        setTimeout(() => letter.remove(), 10000);
+    }, 100);
+}
 
 function stopWriting() {
     writingActive = false;
@@ -346,6 +359,7 @@ function stopWriting() {
     // remove todas as letras existentes
     document.querySelectorAll('.bouncing-letter').forEach(el => el.remove());
 }
+
 
 
 
