@@ -238,6 +238,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 
 
 /* --- FEU --- */
+
 .fire-container {
     position: absolute;
     left: 50%;
@@ -324,8 +325,9 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
     100% { transform: translate(-50%, -80px) scale(1.8); opacity: 0; }
 }
 
+/* RUNES */
 .inner-page {
-    position: relative; /* IMPORTANT : pour que les runes soient positionnées à l'intérieur */
+    position: relative;
     overflow: hidden;
 }
 
@@ -334,10 +336,13 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
     font-size: 24px;
     color: gold;
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none; /* pour ne pas gêner le clic */
+    pointer-events: none;
     user-select: none;
+    text-shadow: 0 0 8px gold, 0 0 16px gold;
+    transform: scale(0.5) rotate(0deg);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
 
 
 /* --- SECOUER--- */
