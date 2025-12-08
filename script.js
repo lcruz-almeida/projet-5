@@ -348,7 +348,7 @@ function startWriting() {
         document.body.appendChild(letter);
 
         // remove após 5s
-        setTimeout(() => letter.remove(), 5000);
+        setTimeout(() => letter.remove(), 10000);
     }, 100); // cria várias letras por segundo
 }
 
@@ -382,6 +382,9 @@ function resetBook() {
 
     // Para Lumière
     if (typeof stopLumiere === "function") stopLumiere();
+
+    // Para  Écriture
+    if (typeof stopWriting === "function") stopWriting();
     
 
     // Remove TODAS as partículas do ecrã
