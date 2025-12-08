@@ -310,7 +310,7 @@ function spawnSpark() {
 
 
 // BUTTON ECRITURE
-const letters = 'ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛋᛏᛒᛖᛗᛚᛜᛞᛟ';
+const letters = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛋ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛜ','ᛞ','ᛟ'];
 let writingActive = false;
 let writingInterval = null;
 
@@ -330,7 +330,7 @@ function startWriting() {
         letter.classList.add('bouncing-letter');
 
         // letra aleatória
-        letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
+        letter.textContent = letters[Math.floor(Math.random() * letters.length)];
 
         const colors = ['red','blue','green','yellow','pink'];
         letter.style.color = colors[Math.floor(Math.random() * colors.length)];
