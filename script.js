@@ -222,6 +222,7 @@ function startLumiere() {
 
 function stopLumiere() {
     if (lumiereInterval) clearInterval(lumiereInterval);
+     document.querySelectorAll('.magic-beam').forEach(el => el.remove());
 }
 
 
