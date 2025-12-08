@@ -383,4 +383,25 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 }
 
 
+/* --- ECRITURE --- */
+.bouncing-letter {
+    position: absolute;
+    font-size: 24px;
+    font-family: 'Georgia', serif;
+    color: var(--gold);
+    user-select: none;
+    pointer-events: none;
+    text-shadow: 0 0 8px var(--gold), 0 0 16px var(--gold);
+    animation: bounce 3s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    25%  { transform: translate(20px, -30px) rotate(90deg); }
+    50%  { transform: translate(-15px, 20px) rotate(180deg); }
+    75%  { transform: translate(30px, -10px) rotate(270deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+
 
