@@ -178,25 +178,22 @@ function shakeBook() {
 
 // BUTTON LUMIERE
 function createLumiere() {
-    if (!isOpen) return; // só cria feixe se o livro estiver aberto
+    if (!isOpen) return;
 
+    const bookRect = document.getElementById('bookContainer').getBoundingClientRect();
     const beam = document.createElement('div');
     beam.classList.add('magic-beam');
 
-    // posição inicial: centro do lumiereOrigin
-    const origin = document.getElementById('lumiereOrigin').getBoundingClientRect();
-    const startX = origin.left + origin.width / 2;
-    const startY = origin.top + origin.height / 2;
-
-    // posiciona o feixe
+    // posição inicial: centro do livro
+    const startX = bookRect.left + bookRect.width / 2;
+    const startY = bookRect.top + bookRect.height / 2;
     beam.style.left = `${startX}px`;
     beam.style.top = `${startY}px`;
-    beam.style.transform = 'translateX(-80%)';
+    beam.style.transform = 'translateX(-50%)';
 
-    // adiciona ao body
     document.body.appendChild(beam);
 
-    // remove automaticamente após animação
+    // remove após animação
     setTimeout(() => beam.remove(), 2600);
 }
 
