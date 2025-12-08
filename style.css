@@ -203,7 +203,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 
 .book-container.open .p1 { transform: rotateY(-170deg); transition-delay: 0.3s; }
 .book-container.open .p2 { transform: rotateY(-160deg); transition-delay: 0.3s; }
-.book-container.open .p3 { transform: rotateY(-150deg); transition-delay: 0.3s; background: linear-gradient(to right, #ddd, var(--page-color) 10%); border-left: none; }
+.book-container.open .p3 { transform: rotateY(-10deg); transition-delay: 0.3s; background: linear-gradient(to right, #ddd, var(--page-color) 10%); border-left: none; }
 
 /* --- VENT --- */
 .page.fly {
