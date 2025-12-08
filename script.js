@@ -332,6 +332,8 @@ function startWriting() {
         // letra aleatória
         letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
 
+        letter.style.color = 'red';
+
         // posição inicial dentro do livro
         const x = bookRect.left + Math.random() * bookRect.width;
         const y = bookRect.top + Math.random() * bookRect.height;
@@ -345,7 +347,7 @@ function startWriting() {
         document.body.appendChild(letter);
 
         // remove após 5s
-        setTimeout(() => letter.remove(), 5000);
+        setTimeout(() => letter.remove(), 10000);
     }, 100); // cria várias letras por segundo
 }
 
