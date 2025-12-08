@@ -311,46 +311,32 @@ function spawnSpark() {
 
 // BUTTON ECRITURE
 const letters = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛋ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛜ','ᛞ','ᛟ'];
-let writingActive = false;
-let writingInterval = null;
 
-function startWriting() {
-    if (!isOpen) toggleBook(); // abre o livro se estiver fechado
+writingInterval = setInterval(() => {
+    const bookRect = document.getElementById('bookContainer').getBoundingClientRect();
+    const letter = document.createElement('div');
+    letter.classList.add('bouncing-letter');
 
-    if (writingActive) {
-        stopWriting();
-        return;
-    }
+    // letra aleatória do array
+    letter.textContent = letters[Math.floor(Math.random() * letters.length)];
 
-    writingActive = true;
+    // cor aleatória ou fixa
+    letter.style.color = 'red';
 
-    writingInterval = setInterval(() => {
-        const bookRect = document.getElementById('bookContainer').getBoundingClientRect();
-        const letter = document.createElement('div');
-        letter.classList.add('bouncing-letter');
+    // posição inicial dentro do livro
+    const x = bookRect.left + Math.random() * bookRect.width;
+    const y = bookRect.top + Math.random() * bookRect.height;
+    letter.style.left = `${x}px`;
+    letter.style.top = `${y}px`;
 
-        // letra aleatória
-        letter.textContent = letters[Math.floor(Math.random() * letters.length)];
+    const scale = 0.5 + Math.random();
+    letter.style.transform = `scale(${scale}) rotate(${Math.random() * 360}deg)`;
 
-        const colors = ['red','blue','green','yellow','pink'];
-        letter.style.color = colors[Math.floor(Math.random() * colors.length)];
+    document.body.appendChild(letter);
 
-        // posição inicial dentro do livro
-        const x = bookRect.left + Math.random() * bookRect.width;
-        const y = bookRect.top + Math.random() * bookRect.height;
-        letter.style.left = `${x}px`;
-        letter.style.top = `${y}px`;
-
-        // animação inicial aleatória
-        const scale = 0.5 + Math.random();
-        letter.style.transform = `scale(${scale}) rotate(${Math.random() * 360}deg)`;
-
-        document.body.appendChild(letter);
-
-        // remove após 5s
-        setTimeout(() => letter.remove(), 10000);
-    }, 100); // cria várias letras por segundo
-}
+    // remove após 10s
+    setTimeout(() => letter.remove(), 10000);
+}, 100);
 
 function stopWriting() {
     writingActive = false;
