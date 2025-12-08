@@ -191,7 +191,116 @@ function spawnFire() {
     document.body.appendChild(flameBox);
 }
 
+let fireActive = false;
+let fireBox = null;
+let sparkLoop = null;
 
+function toggleFire() {
+    if (!isOpen) return;
+
+    if (fireActive) {
+        stopFire();
+    } else {
+        startFire();
+    }
+    fireActive = !fireActive;
+}
+
+function startFire() {
+    stopFire();
+
+    fireBox = document.createElement("div");
+    fireBox.classList.add("fire-container");
+
+    // Flammes principales et secondaires
+    const f1 = document.createElement("div");
+    f1.classList.add("flame");
+
+    const f2 = document.createElement("div");
+    f2.classList.add("flame", "small");
+
+    const f3 = document.createElement("div");
+    f3.classList.add("flame", "small2");
+
+    // Fumée
+    const smoke = document.createElement("div");
+    smoke.classList.add("smoke");
+
+    fireBox.appendChild(f1);
+    fireBox.appendChild(f2);
+    fireBox.appendChild(f3);
+    fireBox.appendChild(smoke);
+
+    document.body.appendChild(fireBox);
+
+    // Étincelles en continu
+    sparkLoop = setInterval(spawnSpark, 90);
+}
+
+function stopFire() {
+    if (fireBox) {
+        fireBox.remove();
+        fireBox = null;
+    }
+    if (sparkLoop) {
+        clearInterval(sparkLoop);
+        sparkLoop = null;
+    }
+}
+
+function spawnSpark() {
+    if (!fireBox) return;
+
+    const s = document.createElement("div");
+    s.classList.add("spark");
+
+    s.style.left = (50 + (Math.random() * 20 - 10)) + "%";
+    s.style.bottom = "40px";
+
+    fireBox.appendChild(s);
+
+    setTimeout(() => s.remove(), 1200);
+}
+
+// rune
+
+const runes = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛋ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛜ','ᛞ','ᛟ'];
+
+function startWriting() {
+    if (!isOpen) toggleBook(); // ouvre le livre si fermé
+
+    const pages = document.querySelectorAll('.inner-page'); // toutes les pages intérieures
+    const numRunes = 5; // nombre de runes par clic
+
+    for (let i = 0; i < numRunes; i++) {
+        const page = pages[Math.floor(Math.random() * pages.length)]; // page aléatoire
+        const rect = page.getBoundingClientRect();
+
+        const rune = document.createElement('div');
+        rune.classList.add('rune');
+        rune.textContent = runes[Math.floor(Math.random() * runes.length)];
+
+        // Position aléatoire à l'intérieur de la page
+        const x = Math.random() * (rect.width - 24); // marge pour rune
+        const y = Math.random() * (rect.height - 24);
+
+        rune.style.left = `${x}px`;
+        rune.style.top = `${y}px`;
+
+        page.appendChild(rune);
+
+        // Animation apparition et légère rotation
+        requestAnimationFrame(() => {
+            rune.style.opacity = 1;
+            rune.style.transform = `scale(1) rotate(${Math.random() * 360}deg)`;
+        });
+
+        // Disparition après 3s
+        setTimeout(() => {
+            rune.style.opacity = 0;
+            setTimeout(() => rune.remove(), 500);
+        }, 3000);
+    }
 
 // BUTTON LUMIERE
 function createLumiere() {
