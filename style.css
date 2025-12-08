@@ -324,19 +324,6 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
     100% { transform: translate(-50%, -80px) scale(1.8); opacity: 0; }
 }
 
-
-.rune {
-    position: absolute;
-    font-size: 24px;
-    color: var(--gold);
-    opacity: 0;
-    pointer-events: none;
-    user-select: none;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    text-shadow: 0 0 8px var(--gold), 0 0 16px var(--gold);
-    transform: scale(0.5) rotate(0deg);
-}
-
 .inner-page {
     position: relative; /* IMPORTANT : pour que les runes soient positionnées à l'intérieur */
     overflow: hidden;
