@@ -348,7 +348,7 @@ function startWriting() {
         document.body.appendChild(letter);
 
         // remove após 5s
-        setTimeout(() => letter.remove(), 10000);
+        setTimeout(() => letter.remove(), 5000);
     }, 100); // cria várias letras por segundo
 }
 
