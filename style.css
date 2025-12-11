@@ -144,7 +144,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 
 .front-cover {
   background: var(--book-color);
-  z-index: 20;
+  : 20;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -188,7 +188,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
     width: 0;
     height: 0;
     pointer-events: none;
-    z-index: 20;
+    z-index: 1000;
 }
 
 .p1 { z-index: 15; }
