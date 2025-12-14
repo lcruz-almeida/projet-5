@@ -264,27 +264,6 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 
 
 
-
-/* --- LUMIERE --- */
-.magic-light {
-    width: 50px;
-    height: 150px;
-    background: radial-gradient(circle, rgba(255,255,180,0.8) 0%, transparent 80%);
-    border-radius: 50%;
-    pointer-events: none;
-    filter: blur(15px) brightness(2);
-    transform-origin: center top;
-    animation: beamGrow 1s ease-out forwards;
-}
-
-@keyframes beamGrow {
-    0% { transform: scaleY(0); opacity: 0.8; }
-    100% { transform: scaleY(1); opacity: 0; }
-}
-
-
-
-
 /* --- FEU --- */
 .fire-container {
     position: absolute;
