@@ -178,21 +178,31 @@ function shakeBook() {
         setTimeout(() => {
             bookContainer.classList.add('shake');
 
-            // TOCA O SOM
+            // toca o som no início
             playSound("soundShake");
 
-            setTimeout(() => bookContainer.classList.remove('shake'), 500);
+            // remove shake e para o som após 0.5s
+            setTimeout(() => {
+                bookContainer.classList.remove('shake');
+                stopSound("soundShake");
+            }, 500);
+
         }, 1200);
     } else {
         // se já estiver aberto
         bookContainer.classList.add('shake');
 
-        // TOCA O SOM
+        // toca o som no início
         playSound("soundShake");
 
-        setTimeout(() => bookContainer.classList.remove('shake'), 500);
+        // remove shake e para o som após 0.5s
+        setTimeout(() => {
+            bookContainer.classList.remove('shake');
+            stopSound("soundShake");
+        }, 500);
     }
 }
+
 
 
 
