@@ -247,9 +247,8 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
   100% { transform: translate(0,0) rotate(0deg); }
 }
 
-/* velocidade original, repetindo 33 vezes para ~5s */
-.shake {
-  animation: shakeOpen 0.15s linear 33;
+.shake { 
+    animation: shakeOpen 1s; /* antes era 0.5s */
 }
 
 
