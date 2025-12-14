@@ -134,10 +134,14 @@ function stopMagic() {
 
 // BUTTON VENT
 function flyPages() {
+
+    const pageCount = 20;
     const pages = document.querySelectorAll('.page:not(.front-cover):not(.back-cover)');
 
-    pages.forEach((page, i) => {
+    
+            for (let i = 0; i < pageCount; i++) {
         setTimeout(() => {
+            const page = pages[i % pages.length]; 
             const flyingPage = page.cloneNode(true);
             const rect = page.getBoundingClientRect();
 
@@ -164,9 +168,8 @@ function flyPages() {
             });
 
             setTimeout(() => flyingPage.remove(), 4000);
-        }, i * 100);
+        }, i * 50);
     });
-
     
 }
 
