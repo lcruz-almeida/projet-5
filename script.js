@@ -230,18 +230,21 @@ function createLumiere() {
     beam.classList.add('magic-beam');
     document.body.appendChild(beam);
 
-    // Pega as dimensões do livro
     const rect = bookContainer.getBoundingClientRect();
 
-    // Usa position: fixed para que o feixe siga a viewport e não o body
-    beam.style.position = 'fixed';
+    beam.style.position = 'fixed'; // fica fixo na viewport
     beam.style.left = `${rect.left + rect.width / 2}px`;
     beam.style.top = `${rect.top + rect.height / 2}px`;
     beam.style.transform = 'translate(-50%, -50%)';
     beam.style.zIndex = 9999;
 
+    // Garante que a opacidade inicial seja visível
+    beam.style.opacity = 1;
+
+    // Remove após animação
     setTimeout(() => beam.remove(), 2600);
 }
+
 
 function toggleLumiere() {
     if (!isOpen) return;
