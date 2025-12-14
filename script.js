@@ -221,10 +221,9 @@ function shakeBook() {
 }
 
 
-// BUTTON LUMIERE
+
 // BUTTON LUMIERE
 let lumiereActive = false;
-let lumiereInterval = null;
 
 function createLumiere() {
     if (!isOpen) return;
