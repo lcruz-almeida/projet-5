@@ -246,7 +246,7 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
   75% { transform: translate(5px,-5px) rotate(-5deg); }
   100% { transform: translate(0,0) rotate(0deg); }
 }
-.shake { animation: shakeOpen 0.5s; }
+.shake { animation: shakeOpen 2.0s; }
 
 
 
