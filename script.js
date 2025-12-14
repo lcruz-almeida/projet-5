@@ -227,23 +227,18 @@ function shakeBook() {
 function createLumiere() {
     if (!isOpen) return;
 
-    const spine = document.querySelector('.spine'); // lombada do livro
     const beam = document.createElement('div');
     beam.classList.add('magic-beam');
 
-    // adiciona à lombada (ou front-cover)
-    spine.appendChild(beam);
+    document.body.appendChild(beam); // adiciona ao body
 
-    // centraliza
-    beam.style.position = 'absolute';
-    beam.style.left = '50%';
-    beam.style.top = '50%';
+    const bookRect = document.getElementById('bookContainer').getBoundingClientRect();
+    beam.style.left = `${bookRect.left + bookRect.width / 2}px`;
+    beam.style.top = `${bookRect.top + bookRect.height / 2}px`;
     beam.style.transform = 'translate(-50%, -50%)';
 
     setTimeout(() => beam.remove(), 2600);
 }
-
-
 
 let lumiereActive = false;
 
