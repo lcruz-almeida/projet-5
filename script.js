@@ -231,18 +231,20 @@ function createLumiere() {
     const beam = document.createElement('div');
     beam.classList.add('magic-beam');
 
+    // Adiciona ao body para ficar acima de tudo
     document.body.appendChild(beam);
 
-    const book = document.getElementById('bookContainer');
-    const rect = book.getBoundingClientRect();
+    // Pega as dimensões do livro
+    const rect = bookContainer.getBoundingClientRect();
 
-    // Centraliza o feixe sobre o livro
-    beam.style.left = `${rect.left + rect.width/2}px`;
-    beam.style.top = `${rect.top + rect.height/2}px`;
-    beam.style.position = 'fixed'; // importante para não se mover com scroll
+    // Centraliza o feixe no livro
+    beam.style.left = `${rect.left + rect.width / 2}px`;
+    beam.style.top = `${rect.top + rect.height / 2}px`;
+    beam.style.position = 'absolute';
     beam.style.transform = 'translate(-50%, -50%)';
     beam.style.zIndex = 9999;
 
+    // Remove após animação
     setTimeout(() => beam.remove(), 2600);
 }
 
@@ -259,7 +261,7 @@ function toggleLumiere() {
 
 function startLumiere() {
     stopLumiere();
-    lumiereInterval = setInterval(createLumiere, 300);
+    lumiereInterval = setInterval(createLumiere, 300); // rajadas contínuas
 }
 
 function stopLumiere() {
@@ -268,7 +270,6 @@ function stopLumiere() {
         lumiereInterval = null;
     }
 }
-
 
 
 // BUTTON FEU
