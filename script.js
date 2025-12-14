@@ -223,28 +223,23 @@ function shakeBook() {
 
 
 // BUTTON LUMIERE
-let lumiereActive = false;
-
 function createLumiere() {
     if (!isOpen) return;
 
     const beam = document.createElement('div');
     beam.classList.add('magic-beam');
-
-    // Adiciona ao body para ficar acima de tudo
     document.body.appendChild(beam);
 
     // Pega as dimensões do livro
     const rect = bookContainer.getBoundingClientRect();
 
-    // Centraliza o feixe no livro
+    // Usa position: fixed para que o feixe siga a viewport e não o body
+    beam.style.position = 'fixed';
     beam.style.left = `${rect.left + rect.width / 2}px`;
     beam.style.top = `${rect.top + rect.height / 2}px`;
-    beam.style.position = 'absolute';
     beam.style.transform = 'translate(-50%, -50%)';
     beam.style.zIndex = 9999;
 
-    // Remove após animação
     setTimeout(() => beam.remove(), 2600);
 }
 
