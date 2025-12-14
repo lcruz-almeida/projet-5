@@ -473,5 +473,30 @@ function resetBook() {
     stopAllEffects();
 }
 
+// Estas funções sobrescrevem as antigas chamadas no HTML
+function rainbowParticles() {
+    rainbowParticlesButton();
+}
+
+function shakeBook() {
+    shakeBookButton();
+}
+
+function flyPages() {
+    flyPagesButton();
+}
+
+function toggleFire() {
+    toggleFireButton();
+}
+
+function toggleLumiere() {
+    toggleLumiereButton();
+}
+
+function startWriting() {
+    startWritingButton();
+}
+
 
 
