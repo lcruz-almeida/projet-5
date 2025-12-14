@@ -223,15 +223,11 @@ function shakeBook() {
 
 
 // BUTTON LUMIERE
-// BUTTON LUMIERE
 function createLumiere() {
     if (!isOpen) return;
 
-    // cria o feixe
     const beam = document.createElement('div');
     beam.classList.add('magic-beam');
-
-    // adiciona ao body
     document.body.appendChild(beam);
 
     // pega o ponto de origem das partículas
@@ -242,12 +238,12 @@ function createLumiere() {
     beam.style.left = `${x}px`;
     beam.style.top = `${y}px`;
     beam.style.position = 'fixed';
-    beam.style.transform = 'translate(-50%, -50%)';
+    beam.style.transform = 'translate(-50%, -50%) rotate(-20deg)'; // ligeira inclinação
     beam.style.zIndex = 9999;
 
-    // remove após 1s
-    setTimeout(() => beam.remove(), 1000);
+    setTimeout(() => beam.remove(), 1200);
 }
+
 
 
 function toggleLumiere() {
