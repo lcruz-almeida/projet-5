@@ -4,6 +4,7 @@ let isOpen = false;
 let particleInterval;
 let magicTimeout;
 let fireInterval = null;
+let lumiereActive = false;
 let lumiereInterval = null;
 
 
@@ -223,6 +224,7 @@ function shakeBook() {
 
 
 // BUTTON LUMIERE
+// BUTTON LUMIERE
 function createMagicLight() {
     if (!isOpen) return;
 
@@ -245,7 +247,6 @@ function createMagicLight() {
     setTimeout(() => light.remove(), 1000);
 }
 
-
 function toggleLumiere() {
     if (!isOpen) return;
 
@@ -259,7 +260,7 @@ function toggleLumiere() {
 
 function startLumiere() {
     stopLumiere();
-    lumiereInterval = setInterval(createLumiere, 300); // rajadas contínuas
+    lumiereInterval = setInterval(createMagicLight, 300); // rajadas contínuas
 }
 
 function stopLumiere() {
@@ -268,6 +269,9 @@ function stopLumiere() {
         lumiereInterval = null;
     }
 }
+
+
+
 
 
 // BUTTON FEU
