@@ -223,27 +223,27 @@ function shakeBook() {
 
 
 // BUTTON LUMIERE
-function createLumiere() {
+function createMagicLight() {
     if (!isOpen) return;
 
-    const beam = document.createElement('div');
-    beam.classList.add('magic-beam');
-    document.body.appendChild(beam);
+    const light = document.createElement('div');
+    light.classList.add('magic-light');
+    document.body.appendChild(light);
 
-    // pega o ponto de origem das partículas
-    const origin = document.getElementById('particleOrigin').getBoundingClientRect();
-    const x = origin.left + origin.width / 2;
-    const y = origin.top + origin.height / 2;
+    // pega o centro do livro
+    const rect = bookContainer.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
 
-    beam.style.left = `${x}px`;
-    beam.style.top = `${y}px`;
-    beam.style.position = 'fixed';
-    beam.style.transform = 'translate(-50%, -50%) rotate(-20deg)'; // ligeira inclinação
-    beam.style.zIndex = 9999;
+    light.style.left = `${x}px`;
+    light.style.top = `${y}px`;
+    light.style.position = 'fixed';
+    light.style.transform = 'translate(-50%, -50%)';
+    light.style.zIndex = 9999;
 
-    setTimeout(() => beam.remove(), 1200);
+    // remove após animação
+    setTimeout(() => light.remove(), 1000);
 }
-
 
 
 function toggleLumiere() {
