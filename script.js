@@ -233,14 +233,19 @@ function createMagicLight() {
     const light = document.createElement('div');
     light.classList.add('magic-light');
 
-    const book = document.getElementById('bookContainer');
-    book.appendChild(light);
+    // Pega o centro do livro na viewport
+    const bookRect = document.getElementById('bookContainer').getBoundingClientRect();
+    const x = bookRect.left + bookRect.width / 2;
+    const y = bookRect.top + bookRect.height / 2;
 
-    light.style.position = 'absolute';
-    light.style.left = '50%';
-    light.style.top = '50%';
+    light.style.left = `${x}px`;
+    light.style.top = `${y}px`;
+    light.style.position = 'fixed'; // importante: não afetado pelo transform do livro
     light.style.transform = 'translate(-50%, -50%)';
 
+    document.body.appendChild(light);
+
+    // Remove a luz após a animação
     setTimeout(() => light.remove(), 1000);
 }
 
@@ -250,21 +255,28 @@ function toggleLumiere() {
     const audio = document.getElementById("soundLumiere");
 
     if (!lumiereActive) {
-        if (audio) audio.play().catch(e => console.log(e));
-        lumiereInterval = setInterval(createMagicLight, 200); // luz contínua
+        // Toca o som
+        if (audio) audio.currentTime = 0;
+        if (audio) audio.play().catch(e => console.log("Erro de áudio: " + e));
+
+        // Cria luz continuamente
+        lumiereInterval = setInterval(createMagicLight, 200);
         lumiereActive = true;
     } else {
+        // Para o som
         if (audio) {
             audio.pause();
             audio.currentTime = 0;
         }
+
+        // Para a criação da luz e remove as existentes
         clearInterval(lumiereInterval);
         lumiereInterval = null;
-        lumiereActive = false;
         document.querySelectorAll('.magic-light').forEach(el => el.remove());
+
+        lumiereActive = false;
     }
 }
-
 
 
 // BUTTON FEU
