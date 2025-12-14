@@ -136,14 +136,14 @@ function stopMagic() {
 function flyPages() {
     if (!isOpen) return;
 
-    const pages = document.querySelectorAll('.page:not(.front-cover):not(.back-cover)');
-    const repeat = 10; // cada página vai se repetir 10 vezes
-    const totalClones = pages.length * repeat;
-
     const windSound = document.getElementById('soundWind');
     windSound.currentTime = 0;
     windSound.play().catch(e => console.log("Erro de áudio: " + e));
-
+    
+    const pages = document.querySelectorAll('.page:not(.front-cover):not(.back-cover)');
+    const repeat = 10; // cada página vai se repetir 10 vezes
+    const totalClones = pages.length * repeat;
+  
 
     for (let i = 0; i < totalClones; i++) {
         setTimeout(() => {
