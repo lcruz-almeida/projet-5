@@ -375,6 +375,7 @@ function startWriting() {
         const y = bookRect.top + Math.random() * bookRect.height;
         letter.style.left = `${x}px`;
         letter.style.top = `${y}px`;
+        letter.style.position = 'absolute';
 
         // animação inicial aleatória
         const scale = 0.5 + Math.random();
