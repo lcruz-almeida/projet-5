@@ -223,17 +223,20 @@ function shakeBook() {
 
 
 // BUTTON LUMIERE
+// ----------------------
+// BUTTON LUMIERE
+// ----------------------
 let lumiereActive = false;
 let lumiereInterval = null;
 
+// Função que cria uma luz mágica
 function createMagicLight() {
     if (!isOpen) return;
 
     const light = document.createElement('div');
     light.classList.add('magic-light');
-    document.body.appendChild(light);
 
-    // Usa o ponto definido para a luz
+    // Ponto de origem da luz
     const origin = document.getElementById('lumiereOrigin').getBoundingClientRect();
     const x = origin.left + origin.width / 2;
     const y = origin.top + origin.height / 2;
@@ -244,10 +247,19 @@ function createMagicLight() {
     light.style.transform = 'translate(-50%, -50%)';
     light.style.zIndex = 9999;
 
-    // remove após animação
+    // Animação de expansão/fade (via CSS)
+    light.style.opacity = 1;
+    light.style.transition = 'all 1s ease-out';
+    setTimeout(() => {
+        light.style.transform = `translate(-50%, -50%) scale(${1 + Math.random()})`;
+        light.style.opacity = 0;
+    }, 50);
+
+    // Remove após animação
     setTimeout(() => light.remove(), 1000);
 }
 
+// Função que alterna a luz mágica
 function toggleLumiere() {
     if (!isOpen) return;
 
@@ -260,6 +272,9 @@ function toggleLumiere() {
             audio.currentTime = 0;
             audio.play().catch(e => console.log("Erro de áudio: " + e));
         }
+
+        // Inicia intervalo de luz
+        lumiereInterval = setInterval(createMagicLight, 200); // cria uma luz a cada 0.2s
         lumiereActive = true;
     } else {
         // Para o som
@@ -267,8 +282,31 @@ function toggleLumiere() {
             audio.pause();
             audio.currentTime = 0;
         }
+
+        // Para o intervalo de luz
+        if (lumiereInterval) {
+            clearInterval(lumiereInterval);
+            lumiereInterval = null;
+        }
+
         lumiereActive = false;
     }
+}
+
+// Função auxiliar para parar a luz (usada no resetBook)
+function stopLumiere() {
+    if (lumiereInterval) {
+        clearInterval(lumiereInterval);
+        lumiereInterval = null;
+    }
+    lumiereActive = false;
+    const audio = document.getElementById("soundLumiere");
+    if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
+    // Remove todas as luzes existentes
+    document.querySelectorAll('.magic-light').forEach(el => el.remove());
 }
 
 
