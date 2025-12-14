@@ -113,9 +113,11 @@ function rainbowParticles() {
 
     if (!particlesActive) {
         startMagic();
+        playSound("soundParticles"); 
         particlesActive = true;
     } else {
         stopMagic();
+        stopSound("soundParticles");
         particlesActive = false;
     }
 }
