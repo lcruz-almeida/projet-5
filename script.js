@@ -233,18 +233,15 @@ function createMagicLight() {
     const light = document.createElement('div');
     light.classList.add('magic-light');
 
-    const origin = document.getElementById('lumiereOrigin').getBoundingClientRect();
-    const x = origin.left + origin.width / 2;
-    const y = origin.top + origin.height / 2;
+    const book = document.getElementById('bookContainer');
+    book.appendChild(light);
 
-    light.style.left = `${x}px`;
-    light.style.top = `${y}px`;
-    light.style.position = 'fixed';
+    light.style.position = 'absolute';
+    light.style.left = '50%';
+    light.style.top = '50%';
     light.style.transform = 'translate(-50%, -50%)';
 
-    document.body.appendChild(light);
-
-    setTimeout(() => light.remove(), 1000); // remove após animação
+    setTimeout(() => light.remove(), 1000);
 }
 
 function toggleLumiere() {
