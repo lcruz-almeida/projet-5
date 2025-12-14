@@ -256,23 +256,21 @@ button:hover { background: var(--gold); color: #000; transform: scale(1.05); }
 
 /* --- LUMIERE --- */
 .magic-beam {
-    position: absolute;         /* position absolue par rapport au body */
-    width: 0;
-    height: 0;
-    border-left: 100px solid transparent;   /* moitié largeur gauche */
-    border-right: 100px solid transparent;  /* moitié largeur droite */
-    border-top: 200px solid rgba(255,255,220,0.9); /* couleur lumière */
-    filter: blur(22px) brightness(2.5);
-    transform-origin: center bottom;
-    animation: beamExpand 2.5s ease-out forwards;
-    z-index: 9999;
+    width: 50px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255,255,180,0.8) 0%, transparent 80%);
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(15px) brightness(2);
+    transform-origin: center top;
+    animation: beamGrow 1s ease-out forwards;
 }
 
-@keyframes beamExpand {
-    0%   { opacity: 0.9; transform: scale(0.2); }
-    60%  { opacity: 1;   transform: scale(1.3); }
-    100% { opacity: 0;   transform: scale(2); }
+@keyframes beamGrow {
+    0% { transform: scaleY(0); opacity: 0.8; }
+    100% { transform: scaleY(1); opacity: 0; }
 }
+
 
 
 /* --- FEU --- */
