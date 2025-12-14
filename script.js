@@ -235,13 +235,15 @@ function createMagicLight() {
 
     // Pega o centro do livro na viewport
     const bookRect = document.getElementById('bookContainer').getBoundingClientRect();
-    const x = bookRect.left + bookRect.width / 2-80;
-    const y = bookRect.top + bookRect.height / 2;
+    const lightWidth = 300; // largura da luz
+    const lightHeight = 300; // altura da luz
+    const x = bookRect.left + bookRect.width / 2 - lightWidth / 2 - 80; // desloca 80px para a esquerda
+    const y = bookRect.top + bookRect.height / 2 - lightHeight / 2; // central vertical
 
     light.style.left = `${x}px`;
     light.style.top = `${y}px`;
-    light.style.position = 'fixed'; // importante: não afetado pelo transform do livro
-    light.style.transform = 'translate(-50%, -50%)';
+    light.style.position = 'fixed';
+    light.style.transform = 'none'; // sem translate, já calculamos posição exata
 
     document.body.appendChild(light);
 
@@ -256,8 +258,10 @@ function toggleLumiere() {
 
     if (!lumiereActive) {
         // Toca o som
-        if (audio) audio.currentTime = 0;
-        if (audio) audio.play().catch(e => console.log("Erro de áudio: " + e));
+        if (audio) {
+            audio.currentTime = 0;
+            audio.play().catch(e => console.log("Erro de áudio: " + e));
+        }
 
         // Cria luz continuamente
         lumiereInterval = setInterval(createMagicLight, 200);
@@ -277,6 +281,7 @@ function toggleLumiere() {
         lumiereActive = false;
     }
 }
+
 
 
 // BUTTON FEU
