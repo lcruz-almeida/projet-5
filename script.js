@@ -158,7 +158,7 @@ function flyPages() {
             flyingPage.style.height = `${rect.height}px`;
             flyingPage.style.zIndex = 1000;
             flyingPage.style.pointerEvents = 'none';
-            flyingPage.style.transition = 'transform 4s ease-out, opacity 4s ease-out';
+            flyingPage.style.transition = 'transform 6s ease-out, opacity 6s ease-out';
 
             document.body.appendChild(flyingPage);
 
@@ -175,7 +175,7 @@ function flyPages() {
 
             // Remove o clone após 4s
             setTimeout(() => flyingPage.remove(), 4000);
-        }, i * 50); // pequenas diferenças de tempo
+        }, i * 100); // pequenas diferenças de tempo
     }
     
      // Para o som após todas as páginas terminarem
