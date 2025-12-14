@@ -19,6 +19,16 @@ function playSound(audioId) {
     }
 }
 
+
+// FUNÇÃO PARA PARAR SOM
+function stopSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
+}
+
 // Alternar tema (dark/light)
 function toggleTheme() {
     body.classList.toggle('dark-mode');
@@ -163,17 +173,27 @@ function flyPages() {
 function shakeBook() {
     if (!isOpen) {
         toggleBook(); // abre o livro
+
         // espera 1.2s até a animação do livro abrir
         setTimeout(() => {
             bookContainer.classList.add('shake');
+
+            // TOCA O SOM
+            playSound("soundShake");
+
             setTimeout(() => bookContainer.classList.remove('shake'), 500);
         }, 1200);
     } else {
         // se já estiver aberto
         bookContainer.classList.add('shake');
+
+        // TOCA O SOM
+        playSound("soundShake");
+
         setTimeout(() => bookContainer.classList.remove('shake'), 500);
     }
 }
+
 
 
 // BUTTON LUMIERE
