@@ -239,13 +239,14 @@ function createMagicLight() {
     const lightHeight = 300; // altura da luz
     const x = bookRect.left + bookRect.width / 2 - lightWidth / 2 - 80; // desloca 80px para a esquerda
     const y = bookRect.top + bookRect.height / 2 - lightHeight / 2; // central vertical
+   
 
+    document.body.appendChild(light);
     light.style.left = `${x}px`;
     light.style.top = `${y}px`;
     light.style.position = 'fixed';
-    light.style.transform = 'none'; // sem translate, já calculamos posição exata
-
-    document.body.appendChild(light);
+    light.style.zIndex = 9999;
+    light.style.transform = 'none';
 
     // Remove a luz após a animação
     setTimeout(() => light.remove(), 1000);
